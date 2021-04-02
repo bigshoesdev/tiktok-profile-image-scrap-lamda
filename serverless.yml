@@ -5,18 +5,18 @@
 # uses to deploy your code to your provider of choice
 
 # The `service` block is the name of the service
-service: tiktok-test-profile-image-uploader
 
+service: tiktok-profile-image-uploader
 frameworkVersion: '2'
 
 custom:
-  bucket: tiktok-test-profile-image-bucket
+  bucket: tiktok-profile-image-bucket
 
 # The `provider` block defines where your service will be deployed
 provider:
   name: aws
   runtime: nodejs12.x
-  stackName: TiktokTestProfileImageUploader
+  stackName: TiktokProfileImageUploader
   iam:
     role:
       statements:
