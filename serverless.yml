@@ -1,0 +1,56 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: tiktok-test-profile-image-uploader
+
+frameworkVersion: '2'
+
+custom:
+  bucket: tiktok-test-profile-image-bucket
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stackName: TiktokTestProfileImageUploader
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "s3:PutObject" 
+          Resource: 
+            - "arn:aws:s3:::${self:custom.bucket}/*" 
+        - Effect: "Allow"
+          Action:
+            - "s3:PutObjectAcl" 
+          Resource: 
+            - "arn:aws:s3:::${self:custom.bucket}/*" 
+
+# The `functions` block defines what code to deploy
+functions:
+  UploadImage:
+    handler: uploader.handler
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: upload
+          method: get
+          cors: true
+    environment:
+      Bucket: ${self:custom.bucket} 
+
+resources:
+  Resources:
+    StorageBucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: ${self:custom.bucket}
+
+
+plugins:
+  - serverless-offline

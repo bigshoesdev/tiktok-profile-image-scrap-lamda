@@ -1,0 +1,19 @@
+{
+  "name": "tiktok-profile-image-uploader",
+  "version": "1.0.0",
+  "description": "Tiktok Profile Image Uploader",
+  "main": "uploader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^6.9.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "tiktok-scraper": "^1.4.22",
+    "uuid": "^8.3.2"
+  }
+}
