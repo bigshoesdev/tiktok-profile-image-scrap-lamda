@@ -14,6 +14,9 @@ module.exports.handler = async (event, context, callback) => {
   if (!username) {
     callback(null, {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify({
         success: false,
         message: "Please input username.",
@@ -31,8 +34,12 @@ module.exports.handler = async (event, context, callback) => {
       userAvatarURL = tiktokResponse.user.avatarLarger;
     }
   } catch (e) {
+    console.log(e);
     callback(null, {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify({
         success: false,
         message: "The user who has the username does not exist.",
@@ -67,12 +74,21 @@ module.exports.handler = async (event, context, callback) => {
   if (resultURL) {
     callback(null, {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify({ success: true, url: resultURL }),
     });
   } else {
     callback(null, {
       statusCode: 200,
-      body: JSON.stringify({ success: false, message: 'failed to get the profile image.' }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        success: false,
+        message: "failed to get the profile image.",
+      }),
     });
   }
 };

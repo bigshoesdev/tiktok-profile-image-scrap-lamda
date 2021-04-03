@@ -1,0 +1,10 @@
+# Tiktok Profile Image Uploader
+
+https://www.serverless.com/blog/quick-tips-for-faster-serverless-development
+1.serverless logs -f myFuncName -t
+
+2.sls deploy function -f myFuncName
+
+3. sls offline start --skipCacheInvalidation
+
+4. serverless config credentials --provider aws --key AKIAUONFM4UT6LJBBM47 --secret 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 --overwrite
