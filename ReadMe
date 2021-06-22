@@ -7,4 +7,4 @@ https://www.serverless.com/blog/quick-tips-for-faster-serverless-development
 
 3. sls offline start --skipCacheInvalidation
 
-4. serverless config credentials --provider aws --key AKIAUONFM4UT6LJBBM47 --secret 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 --overwrite
+4. serverless config credentials --provider aws --key KEY --secret SECRET --overwrite
