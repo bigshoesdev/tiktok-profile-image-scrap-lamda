@@ -7,7 +7,7 @@
 # The `service` block is the name of the service
 
 service: tiktok-profile-image-uploader
-frameworkVersion: '2'
+frameworkVersion: "2"
 
 custom:
   bucket: tiktok-profile-image-bucket
@@ -22,27 +22,34 @@ provider:
       statements:
         - Effect: "Allow"
           Action:
-            - "s3:PutObject" 
-          Resource: 
-            - "arn:aws:s3:::${self:custom.bucket}/*" 
+            - "s3:PutObject"
+          Resource:
+            - "arn:aws:s3:::${self:custom.bucket}/*"
         - Effect: "Allow"
           Action:
-            - "s3:PutObjectAcl" 
-          Resource: 
-            - "arn:aws:s3:::${self:custom.bucket}/*" 
+            - "s3:PutObjectAcl"
+          Resource:
+            - "arn:aws:s3:::${self:custom.bucket}/*"
 
 # The `functions` block defines what code to deploy
 functions:
   UploadImage:
     handler: uploader.handler
-    # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
           path: upload
           method: get
           cors: true
     environment:
-      Bucket: ${self:custom.bucket} 
+      Bucket: ${self:custom.bucket}
+
+  Post:
+    handler: post.handler
+    events:
+      - http:
+          path: post
+          method: get
+          cors: true
 
 resources:
   Resources:
@@ -50,7 +57,6 @@ resources:
       Type: "AWS::S3::Bucket"
       Properties:
         BucketName: ${self:custom.bucket}
-
 
 plugins:
   - serverless-offline
