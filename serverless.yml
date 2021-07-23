@@ -12,10 +12,7 @@ frameworkVersion: "2"
 custom:
   bucket: tiktok-profile-image-bucket
   serverless-offline:
-    host: '0.0.0.0'
-layers:
-  nodeCanvas:
-    path: node-canvas-layer
+    host: "0.0.0.0"
 
 # The `provider` block defines where your service will be deployed
 provider:
@@ -47,6 +44,9 @@ functions:
           cors: true
     environment:
       Bucket: ${self:custom.bucket}
+    layers:
+      - arn:aws:lambda:us-east-1:305826424103:layer:node12_canvas-lib64-layer:1
+      - arn:aws:lambda:us-east-1:305826424103:layer:node12_canvas_layer:2
 
   Post:
     handler: post.handler
@@ -56,7 +56,8 @@ functions:
           method: get
           cors: true
     layers:
-      - {Ref: NodeCanvasLambdaLayer}
+      - arn:aws:lambda:us-east-1:305826424103:layer:node12_canvas-lib64-layer:1
+      - arn:aws:lambda:us-east-1:305826424103:layer:node12_canvas_layer:2
 
 resources:
   Resources:

@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "canvas": "^2.8.0",
     "serverless-offline": "^6.9.0"
   },
   "dependencies": {

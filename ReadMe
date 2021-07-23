@@ -8,3 +8,11 @@ https://www.serverless.com/blog/quick-tips-for-faster-serverless-development
 3. sls offline start --skipCacheInvalidation
 
 4. serverless config credentials --provider aws --key KEY --secret SECRET --overwrite
+
+
+
+# Layers
+https://www.serverless.com/blog/publish-aws-lambda-layers-serverless-framework
+https://github.com/jwerre/node-canvas-lambda
+
+# Please remove the canvas in node_modules
