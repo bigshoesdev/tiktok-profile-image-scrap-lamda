@@ -3,7 +3,7 @@
 https://www.serverless.com/blog/quick-tips-for-faster-serverless-development
 1.serverless logs -f myFuncName -t
 
-2.sls deploy function -f myFuncName
+2. sls deploy function -f myFuncName
 
 3. sls offline start --skipCacheInvalidation
 

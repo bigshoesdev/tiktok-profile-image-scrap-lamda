@@ -13,6 +13,9 @@ custom:
   bucket: tiktok-profile-image-bucket
   serverless-offline:
     host: '0.0.0.0'
+layers:
+  nodeCanvas:
+    path: node-canvas-layer
 
 # The `provider` block defines where your service will be deployed
 provider:
@@ -52,6 +55,8 @@ functions:
           path: post
           method: get
           cors: true
+    layers:
+      - {Ref: NodeCanvasLambdaLayer}
 
 resources:
   Resources:
