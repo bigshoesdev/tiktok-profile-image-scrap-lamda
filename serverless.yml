@@ -11,6 +11,8 @@ frameworkVersion: "2"
 
 custom:
   bucket: tiktok-profile-image-bucket
+  serverless-offline:
+    host: '0.0.0.0'
 
 # The `provider` block defines where your service will be deployed
 provider:
